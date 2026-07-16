@@ -1,0 +1,51 @@
+name: gym-availability-check
+
+on:
+  schedule:
+    # 30分ごと(UTC)。JST 00:00-05:00 の抑止はスクリプト側で行う。
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}   # 手動実行も可
+
+permissions:
+  contents: write          # state.json / log.txt をコミットし直すため
+
+concurrency:
+  group: gym-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Run notifier
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
+        run: python scraper.py
+
+      - name: Persist state
+        run: |
+          git config user.name  "gym-bot"
+          git config user.email "gym-bot@users.noreply.github.com"
+          git add state.json log.txt 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "update state [skip ci]"
+            # 競合時は最新を取り込んで再試行
+            git pull --rebase --autostash origin ${{ github.ref_name }} || true
+            git push
+          else
+            echo "no state change"
+          fi
