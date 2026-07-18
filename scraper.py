@@ -18,6 +18,8 @@
 import os
 import sys
 import json
+import time
+import random
 import smtplib
 import traceback
 from email.mime.text import MIMEText
@@ -27,6 +29,22 @@ from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 from playwright.sync_api import sync_playwright
+from playwright.sync_api import TimeoutError as PWTimeout
+
+
+class BusyError(Exception):
+    """サイトが混雑/アクセス制限ページを返した場合。"""
+
+
+BUSY_PAT = ("混みあって", "混み合って", "しばらく時間をおいて", "アクセスが集中")
+
+
+def _is_busy(page):
+    try:
+        txt = page.evaluate("() => document.body ? document.body.innerText : ''")
+    except Exception:
+        return False
+    return any(p in txt for p in BUSY_PAT)
 
 JST = ZoneInfo("Asia/Tokyo")
 WELCOME_URL = "https://g-kyoto.growone.net/eshisetsu/menu/Welcome.cgi"
@@ -210,35 +228,50 @@ def scrape():
                                   viewport={"width": 1400, "height": 900})
         page = ctx.new_page()
         page.set_default_timeout(45000)
+        def wait_or_busy(fn):
+            try:
+                fn()
+            except PWTimeout:
+                if _is_busy(page):
+                    raise BusyError()
+                raise
+
         try:
             page.goto(WELCOME_URL, wait_until="domcontentloaded")
+            if _is_busy(page):
+                raise BusyError()
             # 公開検索パネルを開く(best effort, 遷移なし)
             page.evaluate("""() => { const a=[...document.querySelectorAll('a')]
                 .find(e=>/ログインせずに空き状況を検索/.test(e.textContent)); if(a) a.click(); }""")
-            page.wait_for_timeout(500)
+            page.wait_for_timeout(random.randint(700, 1400))
 
             # 1) 検索条件(地区・空き照会・利用目的・スポーツ・バドミントン)
             page.evaluate(JS_SELECT_CONDITIONS, REGIONS)
+            page.wait_for_timeout(random.randint(700, 1400))
             # 2) 選択した条件で次へ → 施設一覧へ
             _click_text(page, "選択した条件で次へ")
-            page.wait_for_selector('input[name="checkMeisaiUniqKey"]', timeout=45000)
+            wait_or_busy(lambda: page.wait_for_selector('input[name="checkMeisaiUniqKey"]', timeout=45000))
             # 3) 対象施設を選択
             n = page.evaluate(JS_SELECT_FACILITIES, KEYS)
             if n < len(KEYS):
+                if _is_busy(page):
+                    raise BusyError()
                 raise RuntimeError(f"facility select mismatch: {n}/{len(KEYS)}")
+            page.wait_for_timeout(random.randint(700, 1400))
             # 4) 選択した施設で検索 → 空き照会へ
             _click_text(page, "選択した施設で検索")
-            page.wait_for_selector('#startDate', timeout=45000)
+            wait_or_busy(lambda: page.wait_for_selector('#startDate', timeout=45000))
 
             # 5) 31日間×2窓(今日, 今日+31)。各窓は「開始日がヘッダに出る+アイコン実在」まで待つ
             for start_iso in (start1, start2):
                 mo = int(start_iso[5:7]); da = int(start_iso[8:10])
                 label = f"{mo}月{da}日"
                 page.evaluate(JS_SET_WINDOW, start_iso)
-                page.wait_for_function(JS_WINDOW_READY, arg=label, timeout=60000)
+                wait_or_busy(lambda: page.wait_for_function(JS_WINDOW_READY, arg=label, timeout=45000))
                 rows = page.evaluate(JS_EXTRACT, [ty, tm])
                 for r in rows:
                     results[r["key"]] = r  # 窓は日付が重ならない
+                page.wait_for_timeout(random.randint(500, 1000))
         except Exception:
             _save_debug(page)
             browser.close()
@@ -286,11 +319,22 @@ def main():
         print(f"[skip] quiet hours (JST {now:%H:%M})")
         return 0
 
-    try:
-        slots = scrape()
-    except Exception:
-        log("ERROR scrape failed; no notify, state kept\n" + traceback.format_exc())
-        return 0  # サイト一時不調でもワークフローを赤にしない/状態は保持
+    slots = None
+    attempts = 4
+    for i in range(1, attempts + 1):
+        try:
+            slots = scrape()
+            break
+        except BusyError:
+            log(f"site busy page returned (attempt {i}/{attempts})")
+            if i < attempts:
+                time.sleep(random.randint(25, 55))
+        except Exception:
+            log("ERROR scrape failed; no notify, state kept\n" + traceback.format_exc())
+            return 0  # サイト一時不調でもワークフローを赤にしない/状態は保持
+    if slots is None:
+        log("site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持")
+        return 0
 
     prev = load_state()
     avail_now = [r for r in slots if r["avail"] > 0]
