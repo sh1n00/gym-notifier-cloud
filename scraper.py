@@ -30,8 +30,11 @@ from playwright.sync_api import sync_playwright
 
 JST = ZoneInfo("Asia/Tokyo")
 WELCOME_URL = "https://g-kyoto.growone.net/eshisetsu/menu/Welcome.cgi"
-STATE_FILE = os.path.join(os.path.dirname(__file__), "state.json")
-LOG_FILE = os.path.join(os.path.dirname(__file__), "log.txt")
+HERE = os.path.dirname(os.path.abspath(__file__))
+STATE_FILE = os.path.join(HERE, "state.json")
+LOG_FILE = os.path.join(HERE, "log.txt")
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/125.0 Safari/537.36")
 
 # ---- 設定 --------------------------------------------------------------
 REGIONS = ["京都市北区","京都市左京区","京都市中京区","京都市東山区","京都市下京区",
@@ -79,14 +82,6 @@ JS_SELECT_FACILITIES = """
 }
 """
 
-JS_CLICK_TEXT = """
-(re) => {
-  const rx=new RegExp(re);
-  const el=[...document.querySelectorAll('button,a')].find(e=>rx.test(e.textContent));
-  if(el){ el.click(); return true; } return false;
-}
-"""
-
 JS_SET_WINDOW = """
 (iso) => {
   const t31=[...document.querySelectorAll('button,a,label,span,div')].find(e=>e.textContent.trim()==='31日間');
@@ -99,7 +94,21 @@ JS_SET_WINDOW = """
 }
 """
 
-JS_EXTRACT = """
+# window描画完了の判定: 要求開始日がヘッダに出て、かつ空き記号アイコンが存在する
+JS_WINDOW_READY = r"""
+(lbl) => {
+  const ts=[...document.querySelectorAll('table.box_calendar')];
+  for(const t of ts){
+    const tr=t.querySelector('tr'); if(!tr) continue;
+    const c=tr.querySelectorAll('th,td'); if(c.length<2) continue;
+    const first=c[1].innerText.replace(/\s+/g,'');
+    if(first.includes(lbl) && t.querySelector('img[src*="icn_scche"]')) return true;
+  }
+  return false;
+}
+"""
+
+JS_EXTRACT = r"""
 (args) => {
   const ty=args[0], tm=args[1];
   const S={'icn_scche_ok.png':'空き','icn_scche_noset.png':'予約済','icn_scche_haifun.png':'利用不可'};
@@ -110,20 +119,20 @@ JS_EXTRACT = """
   gs.forEach(t=>{
     let h3='';
     let c=t.closest('ul.box_schedule')?t.closest('ul.box_schedule').parentElement:t.parentElement;
-    while(c){let s2=c.previousElementSibling;while(s2){if(s2.tagName==='H3'){h3=s2.innerText.replace(/\\s+/g,' ').trim();break;}s2=s2.previousElementSibling;}if(h3)break;c=c.parentElement;}
+    while(c){let s2=c.previousElementSibling;while(s2){if(s2.tagName==='H3'){h3=s2.innerText.replace(/\s+/g,' ').trim();break;}s2=s2.previousElementSibling;}if(h3)break;c=c.parentElement;}
     const tr=[...t.querySelectorAll('tr')]; if(!tr.length) return;
-    const hd=[...tr[0].querySelectorAll('th,td')].map(x=>x.innerText.replace(/\\s+/g,' ').trim());
+    const hd=[...tr[0].querySelectorAll('th,td')].map(x=>x.innerText.replace(/\s+/g,' ').trim());
     const ds=hd.slice(1);
     tr.slice(1).forEach(r=>{
       const cs=[...r.querySelectorAll('th,td')];
-      const tmr=cs[0].innerText.replace(/\\s+/g,' ').trim();
-      const m=tmr.match(/(\\d{2}:\\d{2})\\s*-\\s*(\\d{2}:\\d{2})/); if(!m) return;
+      const tmr=cs[0].innerText.replace(/\s+/g,' ').trim();
+      const m=tmr.match(/(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})/); if(!m) return;
       const st=m[1], ti=m[1]+'-'+m[2];
       cs.slice(1).forEach((cc,i)=>{
         const dstr=ds[i]; if(!dstr) return; const w=dw(dstr);
         let k=false; if(w==='土'||w==='日')k=true; else if(w==='木')k=(st==='19:00'||st==='20:00');
         if(!k) return;
-        const dm=dstr.match(/(\\d+)月(\\d+)日/); if(!dm) return;
+        const dm=dstr.match(/(\d+)月(\d+)日/); if(!dm) return;
         const mo=+dm[1], da=+dm[2]; const yr=(mo<tm)?ty+1:ty;
         const iso=yr+'-'+p(mo)+'-'+p(da); const jp=mo+'月'+da+'日('+w+')';
         const im=cc.querySelector('img'); const sr=im?im.getAttribute('src').split('/').pop():'';
@@ -156,8 +165,37 @@ def end_of_next_month(d: date) -> date:
     return date(y2, m2, 1) - timedelta(days=1)
 
 
+def _click_text(page, text):
+    """テキストを含む button/a を1つクリック(遷移対応)。"""
+    page.locator("button, a").filter(has_text=text).first.click()
+
+
+def _save_debug(page, tag=""):
+    """失敗時の診断情報をログとファイルに残す。"""
+    try:
+        info = page.evaluate("""() => ({
+          url: location.href,
+          title: document.title,
+          grids: document.querySelectorAll('table.box_calendar').length,
+          hasStartDate: !!document.getElementById('startDate'),
+          facCbs: document.querySelectorAll('input[name="checkMeisaiUniqKey"]').length,
+          bodyHead: (document.body ? document.body.innerText.replace(/\\s+/g,' ').slice(0,600) : '')
+        })""")
+        log(f"[debug{tag}] url={info['url']} title={info['title']} "
+            f"grids={info['grids']} startDate={info['hasStartDate']} facCbs={info['facCbs']}")
+        log(f"[debug{tag}] body: {info['bodyHead']}")
+    except Exception:
+        pass
+    try:
+        with open(os.path.join(HERE, "debug_page.html"), "w", encoding="utf-8") as fh:
+            fh.write(page.content())
+        page.screenshot(path=os.path.join(HERE, "debug.png"), full_page=True)
+    except Exception:
+        pass
+
+
 def scrape():
-    """Return list of aggregated slot dicts, or raise on failure."""
+    """対象枠の集計結果リストを返す。失敗時は例外。"""
     now = datetime.now(JST)
     ty, tm = now.year, now.month
     today = now.date()
@@ -168,51 +206,49 @@ def scrape():
     results = {}
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True)
-        ctx = browser.new_context(locale="ja-JP",
-                                  user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                                              "AppleWebKit/537.36 (KHTML, like Gecko) "
-                                              "Chrome/125.0 Safari/537.36"))
+        ctx = browser.new_context(locale="ja-JP", user_agent=UA,
+                                  viewport={"width": 1400, "height": 900})
         page = ctx.new_page()
-        page.set_default_timeout(30000)
+        page.set_default_timeout(45000)
+        try:
+            page.goto(WELCOME_URL, wait_until="domcontentloaded")
+            # 公開検索パネルを開く(best effort, 遷移なし)
+            page.evaluate("""() => { const a=[...document.querySelectorAll('a')]
+                .find(e=>/ログインせずに空き状況を検索/.test(e.textContent)); if(a) a.click(); }""")
+            page.wait_for_timeout(500)
 
-        page.goto(WELCOME_URL, wait_until="networkidle")
-        # reveal the public search panel (best effort)
-        page.evaluate("""() => { const a=[...document.querySelectorAll('a')]
-            .find(e=>/ログインせずに空き状況を検索/.test(e.textContent)); if(a) a.click(); }""")
-        page.wait_for_timeout(500)
+            # 1) 検索条件(地区・空き照会・利用目的・スポーツ・バドミントン)
+            page.evaluate(JS_SELECT_CONDITIONS, REGIONS)
+            # 2) 選択した条件で次へ → 施設一覧へ
+            _click_text(page, "選択した条件で次へ")
+            page.wait_for_selector('input[name="checkMeisaiUniqKey"]', timeout=45000)
+            # 3) 対象施設を選択
+            n = page.evaluate(JS_SELECT_FACILITIES, KEYS)
+            if n < len(KEYS):
+                raise RuntimeError(f"facility select mismatch: {n}/{len(KEYS)}")
+            # 4) 選択した施設で検索 → 空き照会へ
+            _click_text(page, "選択した施設で検索")
+            page.wait_for_selector('#startDate', timeout=45000)
 
-        # 1) search conditions
-        page.evaluate(JS_SELECT_CONDITIONS, REGIONS)
-        # 2) 選択した条件で次へ  (navigates)
-        with page.expect_navigation(wait_until="networkidle"):
-            page.evaluate(JS_CLICK_TEXT, "選択した条件で次へ")
-        # 3) facility list
-        page.wait_for_selector('input[name="checkMeisaiUniqKey"]', timeout=30000)
-        n = page.evaluate(JS_SELECT_FACILITIES, KEYS)
-        if n < len(KEYS):
-            raise RuntimeError(f"facility select mismatch: {n}/{len(KEYS)}")
-        # 4) 選択した施設で検索 (navigates)
-        with page.expect_navigation(wait_until="networkidle"):
-            page.evaluate(JS_CLICK_TEXT, "選択した施設で検索")
-        page.wait_for_selector('#startDate', timeout=30000)
-
-        # 5) two 31-day windows
-        for start_iso in (start1, start2):
-            with page.expect_navigation(wait_until="networkidle"):
+            # 5) 31日間×2窓(今日, 今日+31)。各窓は「開始日がヘッダに出る+アイコン実在」まで待つ
+            for start_iso in (start1, start2):
+                mo = int(start_iso[5:7]); da = int(start_iso[8:10])
+                label = f"{mo}月{da}日"
                 page.evaluate(JS_SET_WINDOW, start_iso)
-            page.wait_for_selector('table.box_calendar', timeout=30000)
-            rows = page.evaluate(JS_EXTRACT, [ty, tm])
-            for r in rows:
-                results[r["key"]] = r  # windows are disjoint by date
-
+                page.wait_for_function(JS_WINDOW_READY, arg=label, timeout=60000)
+                rows = page.evaluate(JS_EXTRACT, [ty, tm])
+                for r in rows:
+                    results[r["key"]] = r  # 窓は日付が重ならない
+        except Exception:
+            _save_debug(page)
+            browser.close()
+            raise
         browser.close()
 
     if not results:
-        raise RuntimeError("no grids parsed (site layout changed or blocked?)")
+        raise RuntimeError("no target slots parsed")
 
-    # cap to current + next month
-    slots = [r for r in results.values()
-             if date.fromisoformat(r["iso"]) <= cap]
+    slots = [r for r in results.values() if date.fromisoformat(r["iso"]) <= cap]
     return slots
 
 
@@ -234,7 +270,7 @@ def save_state(slots):
 def send_email(subject, body):
     addr = os.environ["GMAIL_ADDRESS"]
     pw = os.environ["GMAIL_APP_PASSWORD"]
-    to = os.environ.get("NOTIFY_TO", addr)
+    to = os.environ.get("NOTIFY_TO") or addr
     msg = MIMEText(body, "plain", "utf-8")
     msg["Subject"] = Header(subject, "utf-8")
     msg["From"] = formataddr((str(Header("体育館空き通知", "utf-8")), addr))
@@ -246,8 +282,7 @@ def send_email(subject, body):
 
 def main():
     now = datetime.now(JST)
-    # quiet hours 00:00-05:00 JST -> do nothing
-    if now.hour < 5:
+    if now.hour < 5:  # 00:00-05:00 JST は何もしない
         print(f"[skip] quiet hours (JST {now:%H:%M})")
         return 0
 
@@ -255,9 +290,7 @@ def main():
         slots = scrape()
     except Exception:
         log("ERROR scrape failed; no notify, state kept\n" + traceback.format_exc())
-        # exit 0 so the workflow doesn't mark red for transient site issues;
-        # state is intentionally NOT overwritten.
-        return 0
+        return 0  # サイト一時不調でもワークフローを赤にしない/状態は保持
 
     prev = load_state()
     avail_now = [r for r in slots if r["avail"] > 0]
