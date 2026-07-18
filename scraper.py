@@ -20,6 +20,7 @@ import sys
 import json
 import time
 import random
+import time
 import smtplib
 import traceback
 from email.mime.text import MIMEText
@@ -100,29 +101,52 @@ JS_SELECT_FACILITIES = """
 }
 """
 
-JS_SET_WINDOW = """
-(iso) => {
-  const t31=[...document.querySelectorAll('button,a,label,span,div')].find(e=>e.textContent.trim()==='31日間');
-  if(t31) t31.click();
+# 表示切替=31日間、曜日絞込=木/土/日/土日祝(他は外す)、開始日をセットして
+# 「選択した条件で表示」(モーダルを開くボタン)をクリックする。
+# ※この後、モーダル内の確認ボタン「選択した条件で表示する」を別途クリックして初めて反映される。
+JS_SET_CONTROLS = """
+(args) => {
+  const startISO=args[0], keep=args[1];
+  const r31=document.getElementById('31day');
+  if(r31 && !r31.checked){ const l=document.querySelector('label[for="31day"]'); (l||r31).click(); }
+  document.querySelectorAll('input[name="checkShowDay"]').forEach(cb=>{
+    const want = keep.indexOf(cb.value) >= 0;
+    if(cb.checked !== want){ const l=document.querySelector('label[for="'+cb.id+'"]'); (l||cb).click(); }
+  });
   const di=document.getElementById('startDate');
   const s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;
-  if(di){ s.call(di, iso); di.dispatchEvent(new Event('change',{bubbles:true})); }
-  const b=document.querySelector('button.btn_sort'); if(b) b.click();
+  if(di){ s.call(di, startISO); di.dispatchEvent(new Event('change',{bubbles:true})); }
+  const ob=[...document.querySelectorAll('button.open_modal, button.btn_sort')]
+            .find(b=>/選択した条件で表示/.test(b.textContent));
+  if(ob) ob.click();
   return true;
 }
 """
 
-# window描画完了の判定: 要求開始日がヘッダに出て、かつ空き記号アイコンが存在する
+# 監視する曜日(サイトのcheckShowDay値): 木/土/日/土日祝
+KEEP_DAYS = ["THU", "SAT", "SUN", "HOL"]
+
+# window描画完了の判定:
+#  - 空き記号アイコンが存在
+#  - 列数>=20 (31日間モード。7日間なら8列)
+#  - 先頭日 >= 要求開始日 (window2 が反映されたことの確認)
+#  - 先頭日と末尾日の間隔>=40日 (曜日絞込が効いている=飛び飛びの日付)
 JS_WINDOW_READY = r"""
-(lbl) => {
-  const ts=[...document.querySelectorAll('table.box_calendar')];
-  for(const t of ts){
-    const tr=t.querySelector('tr'); if(!tr) continue;
-    const c=tr.querySelectorAll('th,td'); if(c.length<2) continue;
-    const first=c[1].innerText.replace(/\s+/g,'');
-    if(first.includes(lbl) && t.querySelector('img[src*="icn_scche"]')) return true;
-  }
-  return false;
+(startISO) => {
+  const gs=[...document.querySelectorAll('table.box_calendar')];
+  const t=gs.find(g=>g.querySelector('img[src*="icn_scche"]'));
+  if(!t) return false;
+  const head=[...t.querySelector('tr').querySelectorAll('th,td')].slice(1)
+              .map(x=>x.innerText.replace(/\s+/g,' ').trim());
+  if(head.length < 20) return false;
+  const sy=+startISO.slice(0,4), sm=+startISO.slice(5,7), sd=+startISO.slice(8,10);
+  const startD=new Date(sy, sm-1, sd);
+  const parse=(str)=>{const m=str.match(/(\d+)月(\d+)日/); if(!m) return null;
+    let mo=+m[1], da=+m[2]; let yr=sy; if(mo<sm) yr=sy+1; return new Date(yr, mo-1, da);};
+  const first=parse(head[0]), last=parse(head[head.length-1]);
+  if(!first || !last) return false;
+  const spanDays=(last-first)/86400000;
+  return first>=startD && spanDays>=40;
 }
 """
 
@@ -148,7 +172,8 @@ JS_EXTRACT = r"""
       const st=m[1], ti=m[1]+'-'+m[2];
       cs.slice(1).forEach((cc,i)=>{
         const dstr=ds[i]; if(!dstr) return; const w=dw(dstr);
-        let k=false; if(w==='土'||w==='日')k=true; else if(w==='木')k=(st==='19:00'||st==='20:00');
+        // サイト側で木/土/日/土日祝に絞込済み。木は19:00/20:00開始のみ、それ以外(土日祝)は全時間帯。
+        let k; if(w==='木') k=(st==='19:00'||st==='20:00'); else k=true;
         if(!k) return;
         const dm=dstr.match(/(\d+)月(\d+)日/); if(!dm) return;
         const mo=+dm[1], da=+dm[2]; const yr=(mo<tm)?ty+1:ty;
@@ -221,11 +246,38 @@ def scrape():
     start2 = (today + timedelta(days=31)).isoformat()
     cap = end_of_next_month(today)
 
+    # 実行モード(環境変数 HEADLESS):
+    #   未指定/0 … 本物Chromeを画面表示(ウィンドウが出る。最も確実)
+    #   new     … Chromeの新ヘッドレス(ウィンドウを出さず、本物Chromeに近い。おすすめ)
+    #   1       … 旧ヘッドレス(ウィンドウなしだがサイトに弾かれやすい)
+    mode = os.environ.get("HEADLESS", "new").strip().lower()
+    channel = os.environ.get("CHROME_CHANNEL", "chrome")
+    base_args = ["--disable-blink-features=AutomationControlled"]
+    if mode in ("1", "true", "yes"):
+        headless = True
+        launch_args = base_args
+    elif mode == "new":
+        headless = False
+        launch_args = base_args + ["--headless=new", "--window-size=1400,900"]
+    else:
+        headless = False
+        launch_args = base_args + ["--start-minimized"]
     results = {}
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=True)
+        try:
+            browser = pw.chromium.launch(channel=channel, headless=headless, args=launch_args)
+        except Exception:
+            # Chrome未検出時は同梱Chromiumにフォールバック
+            browser = pw.chromium.launch(headless=headless, args=launch_args)
         ctx = browser.new_context(locale="ja-JP", user_agent=UA,
                                   viewport={"width": 1400, "height": 900})
+        # ヘッドレス/自動化の痕跡を軽く隠す(公開ページ閲覧の範囲)
+        ctx.add_init_script(
+            "Object.defineProperty(navigator,'webdriver',{get:()=>undefined});"
+            "Object.defineProperty(navigator,'languages',{get:()=>['ja-JP','ja']});"
+            "Object.defineProperty(navigator,'plugins',{get:()=>[1,2,3,4,5]});"
+            "window.chrome=window.chrome||{runtime:{}};"
+        )
         page = ctx.new_page()
         page.set_default_timeout(45000)
         def wait_or_busy(fn):
@@ -260,18 +312,25 @@ def scrape():
             page.wait_for_timeout(random.randint(700, 1400))
             # 4) 選択した施設で検索 → 空き照会へ
             _click_text(page, "選択した施設で検索")
-            wait_or_busy(lambda: page.wait_for_selector('#startDate', timeout=45000))
+            wait_or_busy(lambda: page.wait_for_selector('#startDate', timeout=90000))
 
-            # 5) 31日間×2窓(今日, 今日+31)。各窓は「開始日がヘッダに出る+アイコン実在」まで待つ
-            for start_iso in (start1, start2):
-                mo = int(start_iso[5:7]); da = int(start_iso[8:10])
-                label = f"{mo}月{da}日"
-                page.evaluate(JS_SET_WINDOW, start_iso)
-                wait_or_busy(lambda: page.wait_for_function(JS_WINDOW_READY, arg=label, timeout=45000))
-                rows = page.evaluate(JS_EXTRACT, [ty, tm])
-                for r in rows:
-                    results[r["key"]] = r  # 窓は日付が重ならない
-                page.wait_for_timeout(random.randint(500, 1000))
+            # 5) 31日間+曜日絞込(木/土/日/土日祝)。曜日絞込により31列が約2か月分に広がり、
+            #    今日開始の1回だけで「今月+翌月」を丸ごとカバーできる(2枚目は不要)。
+            start_iso = start1
+            page.evaluate(JS_SET_CONTROLS, [start_iso, KEEP_DAYS])
+            page.wait_for_timeout(5000)  # モーダル表示待ち
+            # 確認モーダルが出れば「選択した条件で表示する」を押す(出ない構成でも動くよう任意扱い)
+            try:
+                confirm = page.locator("button").filter(has_text="選択した条件で表示する").first
+                confirm.wait_for(state="visible", timeout=80000)
+                confirm.click()
+            except PWTimeout:
+                pass
+            # グリッド描画(31日間+曜日絞込)完了まで待つ
+            wait_or_busy(lambda: page.wait_for_function(JS_WINDOW_READY, arg=start_iso, timeout=60000))
+            rows = page.evaluate(JS_EXTRACT, [ty, tm])
+            for r in rows:
+                results[r["key"]] = r
         except Exception:
             _save_debug(page)
             browser.close()
@@ -300,6 +359,21 @@ def save_state(slots):
         json.dump(data, fh, ensure_ascii=False, indent=0)
 
 
+def _load_local_secrets():
+    """ローカル実行用: 同フォルダの secrets.json があれば環境変数に反映。"""
+    p = os.path.join(HERE, "secrets.json")
+    if not os.path.exists(p):
+        return
+    try:
+        with open(p, encoding="utf-8") as fh:
+            d = json.load(fh)
+        for k in ("GMAIL_ADDRESS", "GMAIL_APP_PASSWORD", "NOTIFY_TO"):
+            if d.get(k) and not os.environ.get(k):
+                os.environ[k] = str(d[k])
+    except Exception:
+        pass
+
+
 def send_email(subject, body):
     addr = os.environ["GMAIL_ADDRESS"]
     pw = os.environ["GMAIL_APP_PASSWORD"]
@@ -314,6 +388,7 @@ def send_email(subject, body):
 
 
 def main():
+    _load_local_secrets()
     now = datetime.now(JST)
     if now.hour < 5:  # 00:00-05:00 JST は何もしない
         print(f"[skip] quiet hours (JST {now:%H:%M})")
