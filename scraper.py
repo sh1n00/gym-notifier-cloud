@@ -154,7 +154,7 @@ JS_EXTRACT = r"""
 (args) => {
   const ty=args[0], tm=args[1];
   const S={'icn_scche_ok.png':'空き','icn_scche_noset.png':'予約済','icn_scche_haifun.png':'利用不可'};
-  const dw=d=>{const m=d.match(/(月|火|水|木|金|土|日)/);return m?m[1]:'';};
+  const dw=d=>{const m=d.match(/([月火水木金土日])\s*$/);return m?m[1]:'';};
   const p=n=>String(n).padStart(2,'0');
   const gs=[...document.querySelectorAll('table.box_calendar')];
   const a={};
