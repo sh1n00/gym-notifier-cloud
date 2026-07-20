@@ -1,0 +1,370 @@
+2026-07-18 13:45:14 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 342, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 226, in scrape
+    browser = pw.chromium.launch(headless=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 16515, in launch
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_browser_type.py", line 97, in launch
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at C:\Users\user\AppData\Local\ms-playwright\chromium_headless_shell-1228\chrome-headless-shell-win64\chrome-headless-shell.exe
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+
+2026-07-18 13:47:37 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 13:47:37 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 13:47:37 JST	site busy page returned (attempt 1/4)
+2026-07-18 13:48:49 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 342, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 282, in scrape
+    raise RuntimeError("no target slots parsed")
+RuntimeError: no target slots parsed
+
+2026-07-18 13:52:02 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 13:52:02 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 13:52:03 JST	site busy page returned (attempt 1/4)
+2026-07-18 13:53:15 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 359, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 299, in scrape
+    raise RuntimeError("no target slots parsed")
+RuntimeError: no target slots parsed
+
+2026-07-18 13:54:29 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 13:54:29 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 13:54:30 JST	site busy page returned (attempt 1/4)
+2026-07-18 13:56:16 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 13:56:16 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 13:56:16 JST	site busy page returned (attempt 2/4)
+2026-07-18 14:13:27 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 14:13:27 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 14:13:27 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 388, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 313, in scrape
+    wait_or_busy(lambda: confirm.wait_for(state="visible", timeout=15000))
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 274, in wait_or_busy
+    fn()
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 313, in <lambda>
+    wait_or_busy(lambda: confirm.wait_for(state="visible", timeout=15000))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 20298, in wait_for
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_locator.py", line 741, in wait_for
+    await self._frame.wait_for_selector(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 394, in wait_for_selector
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("button").filter(has_text="選択した条件で表示する").first to be visible
+    - waiting for" https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi" navigation to finish...
+
+
+2026-07-18 14:15:27 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title=京都府・市町村共同施設予約システム（施設別空き状況照会） grids=28 startDate=True facCbs=0
+2026-07-18 14:15:27 JST	[debug] body: 京都府・市町村共同施設予約システム ゲストユーザでログイン中 サイトマップ 空き照会・予約 抽選申込 ●メッセージ インターネット上で予約申込を希望する場合は、窓口で利用者登録を行ってください。 利用者登録済の方（利用者IDをお持ちの方）は、 本ページ一番下の「ログイン」ボタンからログインをお願いします。 施設別空き状況照会 施設検索 施設選択 空き照会 対象区分選択 申込入力 内容確認 予約完了 空き有り 予約済み 予約申込対象外 休館日 保守点検 利用不可 表示開始日 表示切替 7日間 31日間 曜日で絞込む 月 火 水 木 金 土 日 土日祝 選択した条件で表示 京都市 市民スポーツ会館 体育室（１／４面） 前の31日分 次の31日分 卓球台のご利用について 市民スポーツ会館では、卓球台の数に限りがあります。 同時間帯で複数の卓球利用があった場合は、 1/4面につき 卓球台3台までのご利用をお願いします。（半面6台、全面13台） 7月18日 土 7月19日 日 7月20日 月 7月23日 木 7月25日 土 7月26日 日 7月30日 木 8月1日 土 8月2日 日 8月6日 木 8月8日 土 8月9日 日 8月11日 火 8月13日 木 8月15日 土 8月16日 日 8月20日 木 8月22日 土 8月23日 日 8月27日 木 8月29日 土 8月30日 日 9月3日 
+2026-07-18 14:15:28 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 388, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 313, in scrape
+    wait_or_busy(lambda: confirm.wait_for(state="visible", timeout=15000))
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 274, in wait_or_busy
+    fn()
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 313, in <lambda>
+    wait_or_busy(lambda: confirm.wait_for(state="visible", timeout=15000))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 20298, in wait_for
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_locator.py", line 741, in wait_for
+    await self._frame.wait_for_selector(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 394, in wait_for_selector
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("button").filter(has_text="選択した条件で表示する").first to be visible
+    - waiting for" https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi" navigation to finish...
+    - navigated to "https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi"
+
+
+2026-07-18 14:17:34 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title=京都府・市町村共同施設予約システム（施設別空き状況照会） grids=28 startDate=True facCbs=0
+2026-07-18 14:17:34 JST	[debug] body: 京都府・市町村共同施設予約システム ゲストユーザでログイン中 サイトマップ 空き照会・予約 抽選申込 ●メッセージ インターネット上で予約申込を希望する場合は、窓口で利用者登録を行ってください。 利用者登録済の方（利用者IDをお持ちの方）は、 本ページ一番下の「ログイン」ボタンからログインをお願いします。 施設別空き状況照会 施設検索 施設選択 空き照会 対象区分選択 申込入力 内容確認 予約完了 空き有り 予約済み 予約申込対象外 休館日 保守点検 利用不可 表示開始日 表示切替 7日間 31日間 曜日で絞込む 月 火 水 木 金 土 日 土日祝 選択した条件で表示 京都市 市民スポーツ会館 体育室（１／４面） 前の31日分 次の31日分 卓球台のご利用について 市民スポーツ会館では、卓球台の数に限りがあります。 同時間帯で複数の卓球利用があった場合は、 1/4面につき 卓球台3台までのご利用をお願いします。（半面6台、全面13台） 7月18日 土 7月19日 日 7月20日 月 7月23日 木 7月25日 土 7月26日 日 7月30日 木 8月1日 土 8月2日 日 8月6日 木 8月8日 土 8月9日 日 8月11日 火 8月13日 木 8月15日 土 8月16日 日 8月20日 木 8月22日 土 8月23日 日 8月27日 木 8月29日 土 8月30日 日 9月3日 
+2026-07-18 14:17:35 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 388, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 313, in scrape
+    wait_or_busy(lambda: confirm.wait_for(state="visible", timeout=55000))
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 274, in wait_or_busy
+    fn()
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 313, in <lambda>
+    wait_or_busy(lambda: confirm.wait_for(state="visible", timeout=55000))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 20298, in wait_for
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_locator.py", line 741, in wait_for
+    await self._frame.wait_for_selector(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 394, in wait_for_selector
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 55000ms exceeded.
+Call log:
+  - waiting for locator("button").filter(has_text="選択した条件で表示する").first to be visible
+    - waiting for" https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi" navigation to finish...
+    - navigated to "https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi"
+
+
+2026-07-18 14:20:28 JST	baseline slots=1562 avail=76 notified=0
+2026-07-18 14:24:09 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 390, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 287, in scrape
+    page.wait_for_timeout(random.randint(700, 1400))
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 12529, in wait_for_timeout
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_page.py", line 1135, in wait_for_timeout
+    await self._main_frame.wait_for_timeout(timeout)
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 916, in wait_for_timeout
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.wait_for_timeout: Target page, context or browser has been closed
+
+2026-07-18 14:25:29 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 390, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 281, in scrape
+    page.goto(WELCOME_URL, wait_until="domcontentloaded")
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 9770, in goto
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 156, in goto
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED; maybe frame was detached?
+Call log:
+  - navigating to "https://g-kyoto.growone.net/eshisetsu/menu/Welcome.cgi", waiting until "domcontentloaded"
+
+
+2026-07-18 14:28:29 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 14:28:29 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 14:28:30 JST	site busy page returned (attempt 1/4)
+2026-07-18 14:30:33 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 14:30:33 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 14:30:33 JST	site busy page returned (attempt 2/4)
+2026-07-18 14:32:32 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 14:32:32 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 14:32:33 JST	site busy page returned (attempt 3/4)
+2026-07-18 14:34:25 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 14:34:25 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 14:34:25 JST	site busy page returned (attempt 4/4)
+2026-07-18 14:34:25 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
+2026-07-18 14:36:59 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title=京都府・市町村共同施設予約システム（施設別空き状況照会） grids=28 startDate=True facCbs=0
+2026-07-18 14:36:59 JST	[debug] body: 京都府・市町村共同施設予約システム ゲストユーザでログイン中 サイトマップ 空き照会・予約 抽選申込 ●メッセージ インターネット上で予約申込を希望する場合は、窓口で利用者登録を行ってください。 利用者登録済の方（利用者IDをお持ちの方）は、 本ページ一番下の「ログイン」ボタンからログインをお願いします。 施設別空き状況照会 施設検索 施設選択 空き照会 対象区分選択 申込入力 内容確認 予約完了 空き有り 予約済み 予約申込対象外 休館日 保守点検 利用不可 表示開始日 表示切替 7日間 31日間 曜日で絞込む 月 火 水 木 金 土 日 土日祝 選択した条件で表示 京都市 市民スポーツ会館 体育室（１／４面） 前の31日分 次の31日分 卓球台のご利用について 市民スポーツ会館では、卓球台の数に限りがあります。 同時間帯で複数の卓球利用があった場合は、 1/4面につき 卓球台3台までのご利用をお願いします。（半面6台、全面13台） 7月18日 土 7月19日 日 7月20日 月 7月23日 木 7月25日 土 7月26日 日 7月30日 木 8月1日 土 8月2日 日 8月6日 木 8月8日 土 8月9日 日 8月11日 火 8月13日 木 8月15日 土 8月16日 日 8月20日 木 8月22日 土 8月23日 日 8月27日 木 8月29日 土 8月30日 日 9月3日 
+2026-07-18 14:37:00 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 400, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 330, in scrape
+    rows = page.evaluate(JS_EXTRACT, [ty, tm])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 9280, in evaluate
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_page.py", line 472, in evaluate
+    return await self._main_frame.evaluate(expression, arg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 345, in evaluate
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.evaluate: ReferenceError: sFdtt is not defined
+    at eval (eval at evaluate (:303:30), <anonymous>:32:23)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:20:19)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:15:17)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:8:6)
+    at UtilityScript.evaluate (<anonymous>:310:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+
+2026-07-18 14:39:23 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 400, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 324, in scrape
+    confirm.wait_for(state="visible", timeout=80000)
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 20298, in wait_for
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_locator.py", line 741, in wait_for
+    await self._frame.wait_for_selector(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 394, in wait_for_selector
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.wait_for: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("button").filter(has_text="選択した条件で表示する").first to be visible
+    - waiting for" https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi" navigation to finish...
+
+
+2026-07-18 14:43:38 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title=京都府・市町村共同施設予約システム（施設別空き状況照会） grids=28 startDate=True facCbs=0
+2026-07-18 14:43:38 JST	[debug] body: 京都府・市町村共同施設予約システム ゲストユーザでログイン中 サイトマップ 空き照会・予約 抽選申込 ●メッセージ インターネット上で予約申込を希望する場合は、窓口で利用者登録を行ってください。 利用者登録済の方（利用者IDをお持ちの方）は、 本ページ一番下の「ログイン」ボタンからログインをお願いします。 施設別空き状況照会 施設検索 施設選択 空き照会 対象区分選択 申込入力 内容確認 予約完了 空き有り 予約済み 予約申込対象外 休館日 保守点検 利用不可 表示開始日 表示切替 7日間 31日間 曜日で絞込む 月 火 水 木 金 土 日 土日祝 選択した条件で表示 京都市 市民スポーツ会館 体育室（１／４面） 前の31日分 次の31日分 卓球台のご利用について 市民スポーツ会館では、卓球台の数に限りがあります。 同時間帯で複数の卓球利用があった場合は、 1/4面につき 卓球台3台までのご利用をお願いします。（半面6台、全面13台） 7月18日 土 7月19日 日 7月20日 月 7月23日 木 7月25日 土 7月26日 日 7月30日 木 8月1日 土 8月2日 日 8月6日 木 8月8日 土 8月9日 日 8月11日 火 8月13日 木 8月15日 土 8月16日 日 8月20日 木 8月22日 土 8月23日 日 8月27日 木 8月29日 土 8月30日 日 9月3日 
+2026-07-18 14:43:39 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 401, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 331, in scrape
+    rows = page.evaluate(JS_EXTRACT, [ty, tm])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 9280, in evaluate
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_page.py", line 472, in evaluate
+    return await self._main_frame.evaluate(expression, arg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 345, in evaluate
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.evaluate: ReferenceError: sFdtt is not defined
+    at eval (eval at evaluate (:303:30), <anonymous>:32:23)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:20:19)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:15:17)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:8:6)
+    at UtilityScript.evaluate (<anonymous>:310:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+
+2026-07-18 14:45:48 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title=京都府・市町村共同施設予約システム（施設別空き状況照会） grids=28 startDate=True facCbs=0
+2026-07-18 14:45:48 JST	[debug] body: 京都府・市町村共同施設予約システム ゲストユーザでログイン中 サイトマップ 空き照会・予約 抽選申込 ●メッセージ インターネット上で予約申込を希望する場合は、窓口で利用者登録を行ってください。 利用者登録済の方（利用者IDをお持ちの方）は、 本ページ一番下の「ログイン」ボタンからログインをお願いします。 施設別空き状況照会 施設検索 施設選択 空き照会 対象区分選択 申込入力 内容確認 予約完了 空き有り 予約済み 予約申込対象外 休館日 保守点検 利用不可 表示開始日 表示切替 7日間 31日間 曜日で絞込む 月 火 水 木 金 土 日 土日祝 選択した条件で表示 京都市 市民スポーツ会館 体育室（１／４面） 前の31日分 次の31日分 卓球台のご利用について 市民スポーツ会館では、卓球台の数に限りがあります。 同時間帯で複数の卓球利用があった場合は、 1/4面につき 卓球台3台までのご利用をお願いします。（半面6台、全面13台） 7月18日 土 7月19日 日 7月20日 月 7月23日 木 7月25日 土 7月26日 日 7月30日 木 8月1日 土 8月2日 日 8月6日 木 8月8日 土 8月9日 日 8月11日 火 8月13日 木 8月15日 土 8月16日 日 8月20日 木 8月22日 土 8月23日 日 8月27日 木 8月29日 土 8月30日 日 9月3日 
+2026-07-18 14:45:50 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 401, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "C:\Users\user\Desktop\booking-gym\gym-notifier-cloud\scraper.py", line 331, in scrape
+    rows = page.evaluate(JS_EXTRACT, [ty, tm])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\sync_api\_generated.py", line 9280, in evaluate
+    self._sync(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_page.py", line 472, in evaluate
+    return await self._main_frame.evaluate(expression, arg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_frame.py", line 345, in evaluate
+    await self._channel.send(
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\playwright\_impl\_connection.py", line 563, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.evaluate: ReferenceError: sFdtt is not defined
+    at eval (eval at evaluate (:303:30), <anonymous>:32:23)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:20:19)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:15:17)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:303:30), <anonymous>:8:6)
+    at UtilityScript.evaluate (<anonymous>:310:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+
+2026-07-18 14:49:13 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 14:49:13 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 14:49:13 JST	site busy page returned (attempt 1/4)
+2026-07-18 14:52:29 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-18 14:52:29 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-18 14:52:29 JST	site busy page returned (attempt 2/4)
+2026-07-18 14:54:35 JST	slots=1562 avail=75 notified=0
