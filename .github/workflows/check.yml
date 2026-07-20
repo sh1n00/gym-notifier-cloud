@@ -2,7 +2,9 @@ name: gym-availability-check
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    # 毎時 0分/30分ちょうどはGitHub Actions側が混雑し遅延・スキップされやすいため
+    # 少しずらして実行する (毎時3分・33分)
+    - cron: "3,33 * * * *"
   workflow_dispatch: {}   # 手動実行も可
 
 permissions:
