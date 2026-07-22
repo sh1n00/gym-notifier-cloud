@@ -101,7 +101,7 @@ JS_SELECT_FACILITIES = """
 }
 """
 
-# 表示切替=31日間、曜日絞込=木/土/日/土日祝(他は外す)、開始日をセットして
+# 表示切替=31日間、曜日絞込=火/木/土/日/土日祝(他は外す)、開始日をセットして
 # 「選択した条件で表示」(モーダルを開くボタン)をクリックする。
 # ※この後、モーダル内の確認ボタン「選択した条件で表示する」を別途クリックして初めて反映される。
 JS_SET_CONTROLS = """
@@ -123,8 +123,8 @@ JS_SET_CONTROLS = """
 }
 """
 
-# 監視する曜日(サイトのcheckShowDay値): 木/土/日/土日祝
-KEEP_DAYS = ["THU", "SAT", "SUN", "HOL"]
+# 監視する曜日(サイトのcheckShowDay値): 火/木/土/日/土日祝
+KEEP_DAYS = ["TUE", "THU", "SAT", "SUN", "HOL"]
 
 # window描画完了の判定:
 #  - 空き記号アイコンが存在
@@ -172,8 +172,8 @@ JS_EXTRACT = r"""
       const st=m[1], ti=m[1]+'-'+m[2];
       cs.slice(1).forEach((cc,i)=>{
         const dstr=ds[i]; if(!dstr) return; const w=dw(dstr);
-        // サイト側で木/土/日/土日祝に絞込済み。木は19:00/20:00開始のみ、それ以外(土日祝)は全時間帯。
-        let k; if(w==='木') k=(st==='19:00'||st==='20:00'); else k=true;
+        // サイト側で火/木/土/日/土日祝に絞込済み。火・木は19:00/20:00開始のみ、それ以外(土日祝)は全時間帯。
+        let k; if(w==='火'||w==='木') k=(st==='19:00'||st==='20:00'); else k=true;
         if(!k) return;
         const dm=dstr.match(/(\d+)月(\d+)日/); if(!dm) return;
         const mo=+dm[1], da=+dm[2]; const yr=(mo<tm)?ty+1:ty;
@@ -314,7 +314,7 @@ def scrape():
             _click_text(page, "選択した施設で検索")
             wait_or_busy(lambda: page.wait_for_selector('#startDate', timeout=90000))
 
-            # 5) 31日間+曜日絞込(木/土/日/土日祝)。曜日絞込により31列が約2か月分に広がり、
+            # 5) 31日間+曜日絞込(火/木/土/日/土日祝)。曜日絞込により31列が約2か月分に広がり、
             #    今日開始の1回だけで「今月+翌月」を丸ごとカバーできる(2枚目は不要)。
             start_iso = start1
             page.evaluate(JS_SET_CONTROLS, [start_iso, KEEP_DAYS])
