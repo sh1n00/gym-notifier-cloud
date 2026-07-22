@@ -13,7 +13,7 @@
 環境変数 (GitHub Secrets):
   GMAIL_ADDRESS       送信元Gmailアドレス
   GMAIL_APP_PASSWORD  Gmailアプリパスワード(16桁)
-  NOTIFY_TO           通知先アドレス(未指定なら GMAIL_ADDRESS)
+  NOTIFY_TO           通知先アドレス(カンマ区切りで複数指定可。未指定なら GMAIL_ADDRESS)
 """
 import os
 import sys
@@ -377,14 +377,15 @@ def _load_local_secrets():
 def send_email(subject, body):
     addr = os.environ["GMAIL_ADDRESS"]
     pw = os.environ["GMAIL_APP_PASSWORD"]
-    to = os.environ.get("NOTIFY_TO") or addr
+    raw_to = os.environ.get("NOTIFY_TO") or addr
+    to_list = [t.strip() for t in raw_to.split(",") if t.strip()]
     msg = MIMEText(body, "plain", "utf-8")
     msg["Subject"] = Header(subject, "utf-8")
     msg["From"] = formataddr((str(Header("体育館空き通知", "utf-8")), addr))
-    msg["To"] = to
+    msg["To"] = ", ".join(to_list)
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as s:
         s.login(addr, pw)
-        s.sendmail(addr, [to], msg.as_string())
+        s.sendmail(addr, to_list, msg.as_string())
 
 
 def main():
