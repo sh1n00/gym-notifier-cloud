@@ -451,3 +451,7 @@ playwright._impl._errors.Error: Page.evaluate: ReferenceError: sFdtt is not defi
 2026-07-23 09:41:02 JST	slots=948 avail=12 notified=0
 2026-07-23 09:57:45 JST	slots=948 avail=14 notified=2
 2026-07-23 11:17:37 JST	slots=948 avail=13 notified=1
+2026-07-23 11:35:25 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-23 11:35:25 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-23 11:35:25 JST	site busy page returned (attempt 1/4)
+2026-07-23 11:37:51 JST	slots=948 avail=14 notified=1
