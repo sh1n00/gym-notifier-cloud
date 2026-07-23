@@ -493,3 +493,16 @@ playwright._impl._errors.Error: Page.evaluate: ReferenceError: sFdtt is not defi
 2026-07-23 20:16:16 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-07-23 20:16:16 JST	site busy page returned (attempt 3/4)
 2026-07-23 20:18:24 JST	slots=948 avail=15 notified=1
+2026-07-23 20:36:13 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-23 20:36:13 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-23 20:36:13 JST	site busy page returned (attempt 1/4)
+2026-07-23 20:39:46 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-23 20:39:46 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-23 20:39:46 JST	site busy page returned (attempt 2/4)
+2026-07-23 20:43:01 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-23 20:43:01 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-23 20:43:01 JST	site busy page returned (attempt 3/4)
+2026-07-23 20:46:18 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-23 20:46:18 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-23 20:46:18 JST	site busy page returned (attempt 4/4)
+2026-07-23 20:46:18 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
