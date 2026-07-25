@@ -652,3 +652,10 @@ playwright._impl._errors.Error: Page.evaluate: ReferenceError: sFdtt is not defi
 2026-07-25 20:59:06 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-07-25 20:59:07 JST	site busy page returned (attempt 1/4)
 2026-07-25 21:01:37 JST	slots=992 avail=14 notified=0
+2026-07-25 22:16:56 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-25 22:16:56 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-25 22:16:56 JST	site busy page returned (attempt 1/4)
+2026-07-25 22:20:14 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-25 22:20:14 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-25 22:20:14 JST	site busy page returned (attempt 2/4)
+2026-07-25 22:22:24 JST	slots=992 avail=17 notified=4
