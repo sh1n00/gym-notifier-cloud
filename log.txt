@@ -659,3 +659,4 @@ playwright._impl._errors.Error: Page.evaluate: ReferenceError: sFdtt is not defi
 2026-07-25 22:20:14 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-07-25 22:20:14 JST	site busy page returned (attempt 2/4)
 2026-07-25 22:22:24 JST	slots=992 avail=17 notified=4
+2026-07-25 22:39:06 JST	slots=992 avail=17 notified=0
