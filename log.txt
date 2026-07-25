@@ -666,3 +666,20 @@ playwright._impl._errors.Error: Page.evaluate: ReferenceError: sFdtt is not defi
 2026-07-26 05:12:58 JST	slots=924 avail=12 notified=0
 2026-07-26 05:29:41 JST	slots=924 avail=12 notified=0
 2026-07-26 05:46:24 JST	slots=924 avail=12 notified=0
+2026-07-26 06:04:14 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-26 06:04:14 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-26 06:04:15 JST	site busy page returned (attempt 1/4)
+2026-07-26 06:07:58 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-07-26 06:07:58 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-07-26 06:07:58 JST	site busy page returned (attempt 2/4)
+2026-07-26 06:08:59 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/menu/Login.cgi title=京都府・市町村共同施設予約システム（施設絞り込み（場所選択）） grids=0 startDate=False facCbs=49
+2026-07-26 06:08:59 JST	[debug] body: 京都府・市町村共同施設予約システム ゲストユーザでログイン中 サイトマップ 空き照会・予約 抽選申込 施設を選択 施設検索 施設選択 空き照会 対象区分選択 申込入力 内容確認 予約完了 空き状況を照会する施設を一つ以上選択し、［選択した施設で検索］ボタンを押してください。 検索結果 62件 検索条件：利用目的で検索＞スポーツ＞バドミントン／追加条件＜地区：京都市北区、京都市左京区、京都市中京区、京都市東山区、京都市下京区、京都市南区、京都市右京区、京都市伏見区、京都市山科区、京都市西京区、宇治市＞ 選択をリセットする 選択 自治体 会館 施設名 京都府 京都府立体育館 第１競技場Ａ 京都府 京都府立体育館 第１競技場Ｂ 京都府 京都府立体育館 第１競技場Ｃ 京都府 京都府立体育館 第２競技場Ｄ 京都府 京都府立体育館 第２競技場Ｅ 京都府 京都テルサ（京都府民総合交流プラザ） スポーツホール 京都府 山城総合運動公園 メインアリーナ全面 京都府 山城総合運動公園 メインアリーナ１／２ 京都府 山城総合運動公園 メインアリーナ１／３ 京都府 山城総合運動公園 メインアリーナ１／６ 京都府 山城総合運動公園 サブアリーナ 京都府 京都府立伏見港公園 体育館 京都市 横大路運動公園 体育館（全面） 京都市 横大路運動公園 体育館（部分）第１面 京都市 横大路運動公園 体育館（部分）第２
+2026-07-26 06:08:59 JST	ERROR scrape failed; no notify, state kept
+Traceback (most recent call last):
+  File "/home/runner/work/gym-notifier-cloud/gym-notifier-cloud/scraper.py", line 402, in main
+    slots = scrape()
+            ^^^^^^^^
+  File "/home/runner/work/gym-notifier-cloud/gym-notifier-cloud/scraper.py", line 311, in scrape
+    raise RuntimeError(f"facility select mismatch: {n}/{len(KEYS)}")
+RuntimeError: facility select mismatch: 10/11
+
