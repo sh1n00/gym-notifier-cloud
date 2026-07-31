@@ -1133,3 +1133,4 @@ RuntimeError: facility select mismatch: 10/11
 2026-07-31 20:57:26 JST	slots=768 avail=14 notified=3
 2026-07-31 21:14:18 JST	slots=768 avail=15 notified=1
 2026-07-31 21:30:56 JST	slots=768 avail=15 notified=0
+2026-07-31 21:47:44 JST	slots=768 avail=15 notified=0
