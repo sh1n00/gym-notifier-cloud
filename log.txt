@@ -1528,3 +1528,13 @@ RuntimeError: facility select mismatch: 10/11
 2026-08-04 21:01:07 JST	slots=1264 avail=5 notified=0
 2026-08-04 21:17:45 JST	slots=1264 avail=5 notified=0
 2026-08-04 21:58:59 JST	slots=1264 avail=5 notified=0
+2026-08-04 22:16:47 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-04 22:16:47 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-04 22:16:47 JST	site busy page returned (attempt 1/4)
+2026-08-04 22:20:08 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-04 22:20:08 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-04 22:20:08 JST	site busy page returned (attempt 2/4)
+2026-08-04 22:23:46 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-04 22:23:46 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-04 22:23:46 JST	site busy page returned (attempt 3/4)
+2026-08-04 22:25:52 JST	slots=1264 avail=5 notified=0
