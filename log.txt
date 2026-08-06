@@ -1676,3 +1676,4 @@ RuntimeError: facility select mismatch: 10/11
 2026-08-06 23:06:47 JST	site busy page returned (attempt 4/4)
 2026-08-06 23:06:47 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
 2026-08-06 23:23:33 JST	slots=1264 avail=13 notified=3
+2026-08-06 23:40:14 JST	slots=1264 avail=13 notified=0
