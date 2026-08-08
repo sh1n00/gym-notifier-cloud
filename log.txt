@@ -1744,3 +1744,16 @@ RuntimeError: facility select mismatch: 10/11
 2026-08-08 08:01:01 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-08-08 08:01:01 JST	site busy page returned (attempt 2/4)
 2026-08-08 08:03:36 JST	slots=1376 avail=14 notified=2
+2026-08-08 09:13:39 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-08 09:13:39 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-08 09:13:39 JST	site busy page returned (attempt 1/4)
+2026-08-08 09:17:18 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-08 09:17:18 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-08 09:17:19 JST	site busy page returned (attempt 2/4)
+2026-08-08 09:20:31 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-08 09:20:31 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-08 09:20:31 JST	site busy page returned (attempt 3/4)
+2026-08-08 09:24:00 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-08 09:24:00 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-08 09:24:00 JST	site busy page returned (attempt 4/4)
+2026-08-08 09:24:00 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
