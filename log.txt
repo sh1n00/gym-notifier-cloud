@@ -2717,3 +2717,10 @@ RuntimeError: facility select mismatch: 10/11
 2026-08-16 19:39:24 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
 2026-08-16 19:56:04 JST	slots=1229 avail=25 notified=0
 2026-08-16 20:12:42 JST	slots=1229 avail=25 notified=0
+2026-08-16 20:30:27 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-16 20:30:27 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-16 20:30:27 JST	site busy page returned (attempt 1/4)
+2026-08-16 20:33:54 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-08-16 20:33:54 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-08-16 20:33:54 JST	site busy page returned (attempt 2/4)
+2026-08-16 20:36:04 JST	slots=1229 avail=27 notified=2
