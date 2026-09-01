@@ -3890,3 +3890,4 @@ RuntimeError: facility select mismatch: 10/11
 2026-09-01 15:25:23 JST	site busy page returned (attempt 1/4)
 2026-09-01 15:27:45 JST	slots=1321 avail=12 notified=2
 2026-09-01 15:44:23 JST	slots=1321 avail=12 notified=0
+2026-09-01 16:01:02 JST	slots=1321 avail=12 notified=0
