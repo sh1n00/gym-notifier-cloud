@@ -3876,3 +3876,4 @@ RuntimeError: facility select mismatch: 10/11
 2026-09-01 09:39:55 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-09-01 09:39:55 JST	site busy page returned (attempt 1/4)
 2026-09-01 09:42:07 JST	slots=1321 avail=10 notified=0
+2026-09-01 09:58:45 JST	slots=1321 avail=11 notified=1
