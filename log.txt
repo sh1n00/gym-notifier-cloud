@@ -4371,3 +4371,4 @@ Traceback (most recent call last):
     raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
 playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 60000ms exceeded.
 
+2026-09-10 06:30:47 JST	slots=1321 avail=6 notified=4
