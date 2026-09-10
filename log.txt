@@ -4459,3 +4459,4 @@ playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 60000ms e
 2026-09-10 17:52:00 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-09-10 17:52:00 JST	site busy page returned (attempt 1/4)
 2026-09-10 17:54:33 JST	slots=1321 avail=7 notified=0
+2026-09-10 21:40:41 JST	slots=1321 avail=6 notified=2
