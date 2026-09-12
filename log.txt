@@ -4556,3 +4556,4 @@ playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 60000ms e
 2026-09-12 16:49:45 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
 2026-09-12 17:06:28 JST	slots=1376 avail=6 notified=0
 2026-09-12 17:23:07 JST	slots=1376 avail=6 notified=0
+2026-09-12 17:39:49 JST	slots=1376 avail=6 notified=0
