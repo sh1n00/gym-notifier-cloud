@@ -4595,3 +4595,7 @@ playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 60000ms e
 2026-09-12 23:54:59 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-09-12 23:55:00 JST	site busy page returned (attempt 1/4)
 2026-09-12 23:57:33 JST	slots=1376 avail=9 notified=3
+2026-09-13 05:07:01 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-13 05:07:01 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-13 05:07:01 JST	site busy page returned (attempt 1/4)
+2026-09-13 05:09:16 JST	slots=1376 avail=10 notified=1
