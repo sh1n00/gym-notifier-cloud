@@ -4651,3 +4651,7 @@ Call log:
 2026-09-13 08:00:08 JST	site busy page returned (attempt 4/4)
 2026-09-13 08:00:08 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
 2026-09-13 08:17:28 JST	slots=1376 avail=26 notified=20
+2026-09-13 08:35:16 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-13 08:35:16 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-13 08:35:16 JST	site busy page returned (attempt 1/4)
+2026-09-13 08:37:35 JST	slots=1376 avail=23 notified=0
