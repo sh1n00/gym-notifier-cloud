@@ -4512,3 +4512,16 @@ playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 60000ms e
 2026-09-12 07:31:00 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-09-12 07:31:00 JST	site busy page returned (attempt 1/4)
 2026-09-12 07:33:04 JST	slots=1376 avail=5 notified=0
+2026-09-12 08:52:29 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-12 08:52:29 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-12 08:52:29 JST	site busy page returned (attempt 1/4)
+2026-09-12 08:55:54 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-12 08:55:54 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-12 08:55:54 JST	site busy page returned (attempt 2/4)
+2026-09-12 08:59:36 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-12 08:59:36 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-12 08:59:36 JST	site busy page returned (attempt 3/4)
+2026-09-12 09:03:16 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-12 09:03:16 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-12 09:03:16 JST	site busy page returned (attempt 4/4)
+2026-09-12 09:03:16 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
