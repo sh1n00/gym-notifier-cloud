@@ -4689,3 +4689,10 @@ Call log:
 2026-09-13 20:54:48 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-09-13 20:54:49 JST	site busy page returned (attempt 1/4)
 2026-09-13 20:57:23 JST	slots=1376 avail=16 notified=0
+2026-09-13 23:49:34 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-13 23:49:34 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-13 23:49:35 JST	site busy page returned (attempt 1/4)
+2026-09-13 23:53:14 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-13 23:53:14 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-13 23:53:14 JST	site busy page returned (attempt 2/4)
+2026-09-13 23:55:57 JST	slots=1376 avail=25 notified=11
