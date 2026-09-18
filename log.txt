@@ -4893,3 +4893,4 @@ Call log:
 2026-09-19 06:32:02 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-09-19 06:32:02 JST	site busy page returned (attempt 1/4)
 2026-09-19 06:34:32 JST	slots=1286 avail=21 notified=0
+2026-09-19 08:00:19 JST	slots=1286 avail=20 notified=0
