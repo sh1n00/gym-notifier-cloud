@@ -5151,3 +5151,4 @@ Call log:
 2026-09-22 15:19:45 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
 2026-09-22 15:36:32 JST	slots=1027 avail=20 notified=1
 2026-09-22 15:53:11 JST	slots=1027 avail=20 notified=0
+2026-09-22 19:51:10 JST	slots=1027 avail=18 notified=0
