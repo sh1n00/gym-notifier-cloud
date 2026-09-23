@@ -5218,3 +5218,10 @@ Call log:
 2026-09-23 10:50:12 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-09-23 10:50:12 JST	site busy page returned (attempt 1/4)
 2026-09-23 10:52:30 JST	slots=1071 avail=20 notified=0
+2026-09-23 11:10:20 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-23 11:10:20 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-23 11:10:20 JST	site busy page returned (attempt 1/4)
+2026-09-23 11:13:45 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-23 11:13:45 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-23 11:13:45 JST	site busy page returned (attempt 2/4)
+2026-09-23 11:15:52 JST	slots=1071 avail=18 notified=0
