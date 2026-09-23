@@ -5237,3 +5237,10 @@ Call log:
 2026-09-23 16:38:59 JST	site busy page returned (attempt 3/4)
 2026-09-23 16:41:28 JST	slots=1071 avail=16 notified=0
 2026-09-23 16:58:12 JST	slots=1071 avail=16 notified=0
+2026-09-23 17:16:00 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-23 17:16:00 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-23 17:16:00 JST	site busy page returned (attempt 1/4)
+2026-09-23 17:19:37 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-23 17:19:37 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-23 17:19:38 JST	site busy page returned (attempt 2/4)
+2026-09-23 17:21:47 JST	slots=1071 avail=15 notified=0
