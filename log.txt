@@ -5411,3 +5411,10 @@ Call log:
 2026-09-26 18:20:39 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-09-26 18:20:39 JST	site busy page returned (attempt 1/4)
 2026-09-26 18:23:19 JST	slots=992 avail=33 notified=2
+2026-09-26 18:41:04 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-26 18:41:04 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-26 18:41:04 JST	site busy page returned (attempt 1/4)
+2026-09-26 18:44:42 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-09-26 18:44:42 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-09-26 18:44:42 JST	site busy page returned (attempt 2/4)
+2026-09-26 18:47:13 JST	slots=992 avail=29 notified=0
