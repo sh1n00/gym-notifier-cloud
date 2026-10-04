@@ -5719,3 +5719,13 @@ Call log:
 2026-10-04 08:32:21 JST	slots=1376 avail=26 notified=0
 2026-10-04 11:22:39 JST	slots=1376 avail=27 notified=2
 2026-10-04 11:39:17 JST	slots=1376 avail=27 notified=0
+2026-10-04 11:57:01 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-04 11:57:01 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-04 11:57:02 JST	site busy page returned (attempt 1/4)
+2026-10-04 12:00:28 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-04 12:00:28 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-04 12:00:28 JST	site busy page returned (attempt 2/4)
+2026-10-04 12:03:43 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-04 12:03:43 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-04 12:03:43 JST	site busy page returned (attempt 3/4)
+2026-10-04 12:06:14 JST	slots=1376 avail=27 notified=0
