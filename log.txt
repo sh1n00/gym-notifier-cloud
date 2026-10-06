@@ -5778,3 +5778,7 @@ Call log:
 2026-10-06 09:44:13 JST	site busy page returned (attempt 2/4)
 2026-10-06 09:46:28 JST	slots=1264 avail=32 notified=0
 2026-10-06 13:30:05 JST	slots=1264 avail=30 notified=2
+2026-10-06 13:47:51 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-06 13:47:51 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-06 13:47:51 JST	site busy page returned (attempt 1/4)
+2026-10-06 13:49:57 JST	slots=1264 avail=30 notified=0
