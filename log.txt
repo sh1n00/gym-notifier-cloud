@@ -5957,3 +5957,10 @@ Call log:
 2026-10-12 05:55:45 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-10-12 05:55:45 JST	site busy page returned (attempt 1/4)
 2026-10-12 05:58:03 JST	slots=1308 avail=15 notified=0
+2026-10-12 08:27:13 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-12 08:27:13 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-12 08:27:13 JST	site busy page returned (attempt 1/4)
+2026-10-12 08:30:35 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-12 08:30:35 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-12 08:30:36 JST	site busy page returned (attempt 2/4)
+2026-10-12 08:33:00 JST	slots=1308 avail=13 notified=0
