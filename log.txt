@@ -6020,3 +6020,4 @@ Call log:
 2026-10-12 21:42:36 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-10-12 21:42:36 JST	site busy page returned (attempt 1/4)
 2026-10-12 21:44:53 JST	slots=1308 avail=11 notified=0
+2026-10-13 05:49:18 JST	slots=1185 avail=10 notified=0
