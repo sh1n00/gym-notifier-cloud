@@ -6021,3 +6021,16 @@ Call log:
 2026-10-12 21:42:36 JST	site busy page returned (attempt 1/4)
 2026-10-12 21:44:53 JST	slots=1308 avail=11 notified=0
 2026-10-13 05:49:18 JST	slots=1185 avail=10 notified=0
+2026-10-13 06:07:03 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-13 06:07:03 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-13 06:07:03 JST	site busy page returned (attempt 1/4)
+2026-10-13 06:10:53 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-13 06:10:53 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-13 06:10:53 JST	site busy page returned (attempt 2/4)
+2026-10-13 06:11:48 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/menu/Welcome.cgi title= grids=0 startDate=False facCbs=0
+2026-10-13 06:11:48 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-13 06:11:48 JST	site busy page returned (attempt 3/4)
+2026-10-13 06:12:53 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/menu/Welcome.cgi title= grids=0 startDate=False facCbs=0
+2026-10-13 06:12:53 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-13 06:12:53 JST	site busy page returned (attempt 4/4)
+2026-10-13 06:12:53 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
