@@ -6069,3 +6069,4 @@ Call log:
 2026-10-13 19:14:18 JST	site busy page returned (attempt 4/4)
 2026-10-13 19:14:18 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
 2026-10-13 19:31:17 JST	slots=1185 avail=17 notified=5
+2026-10-13 19:48:01 JST	slots=1185 avail=17 notified=1
