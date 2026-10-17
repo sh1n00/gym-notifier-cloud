@@ -6240,3 +6240,10 @@ Call log:
 2026-10-17 20:19:44 JST	site busy page returned (attempt 4/4)
 2026-10-17 20:19:44 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
 2026-10-17 22:34:00 JST	slots=1218 avail=16 notified=4
+2026-10-17 22:51:46 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-17 22:51:46 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-17 22:51:46 JST	site busy page returned (attempt 1/4)
+2026-10-17 22:55:09 JST	[debug] url=https://g-kyoto.growone.net/eshisetsu/yoyaku/CalendarStatusBrowser.cgi title= grids=0 startDate=False facCbs=0
+2026-10-17 22:55:09 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
+2026-10-17 22:55:09 JST	site busy page returned (attempt 2/4)
+2026-10-17 22:57:12 JST	slots=1218 avail=16 notified=0
