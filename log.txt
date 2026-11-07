@@ -7064,3 +7064,4 @@ Call log:
 2026-11-07 10:01:44 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
 2026-11-07 13:17:59 JST	slots=1376 avail=11 notified=1
 2026-11-07 13:34:38 JST	slots=1376 avail=12 notified=1
+2026-11-07 13:51:17 JST	slots=1376 avail=10 notified=0
