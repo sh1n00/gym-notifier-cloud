@@ -7240,3 +7240,4 @@ Call log:
 2026-11-12 12:47:01 JST	[debug] body: ただいま大変混みあっています。 しばらく時間をおいてから再度アクセスしてください。 
 2026-11-12 12:47:01 JST	site busy page returned (attempt 4/4)
 2026-11-12 12:47:01 JST	site busy: gave up this run (データセンターIPが弾かれている可能性)。通知なし・状態保持
+2026-11-12 13:03:46 JST	slots=1196 avail=10 notified=3
